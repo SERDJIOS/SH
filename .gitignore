@@ -1,0 +1,12 @@
+.DS_Store
+
+# Raw screen recording (shows browser tabs/bookmarks); the site uses the trimmed speakquick-demo.mp4
+Запись-экрана-*.mp4
+
+# Old assets no longer referenced by index.html
+serhii-portrait.png
+serhii-portrait-back.png
+shot-chillgram.jpg
+shot-speakquick.jpg
+thumb-chillgram.jpg
+thumb-speakquick.jpg
