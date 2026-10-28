@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "my-app-sh"
-  }
+  },
+  "targets": {
+    "my-app-sh": {
+      "hosting": {
+        "main": [
+          "flyaiandme"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
