@@ -13,3 +13,4 @@ thumb-speakquick.jpg
 
 # Firebase CLI cache
 .firebase/
+firebase-debug.log
