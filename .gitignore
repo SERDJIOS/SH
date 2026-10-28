@@ -10,3 +10,6 @@ shot-chillgram.jpg
 shot-speakquick.jpg
 thumb-chillgram.jpg
 thumb-speakquick.jpg
+
+# Firebase CLI cache
+.firebase/
