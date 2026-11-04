@@ -98,8 +98,6 @@ h2{font-size:clamp(22px,4.4vw,32px);line-height:1.1;margin:clamp(64px,8vw,100px)
 .project-slide{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);min-height:min(66vh,680px);overflow:hidden;border:1px solid color-mix(in srgb,var(--amb) 18%,var(--line));border-radius:26px;background:radial-gradient(ellipse at 78% 48%,rgba(181,101,255,.15),transparent 42%),linear-gradient(125deg,#211a2a 0%,#1b1523 52%,#17121f 100%);box-shadow:0 28px 80px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.035)}
 .project-slide{position:relative;transform:perspective(1600px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .project-slide.holo{transition:transform .12s linear}
-.dc{font-variant-ligatures:none}
-.cn{font:inherit;font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC",sans-serif;font-size:.62em;font-style:normal;font-weight:600}
 .project-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(36px,6vw,88px);text-align:center}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--amb);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
 .eyebrow::before{width:20px;height:2px;border-radius:999px;background:var(--acc);content:""}
@@ -591,28 +589,8 @@ body.menu-on{overflow:hidden}
   align();
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(align);
   window.addEventListener('resize',align);
-  // Scramble glyphs, then settle letter by letter
-  var still=matchMedia('(prefers-reduced-motion: reduce)').matches,G='春想学界朋流知化日海梦言世好交来文水星风语习你友未识山月';
-  function decrypt(h){
-    if(still)return;
-    [].slice.call(h.querySelectorAll('.ln-i')).forEach(function(el){
-      var word=el.dataset.w||(el.dataset.w=el.textContent),n=word.length,t0=performance.now()+(+el.style.getPropertyValue('--i')||0)*90,dur=550+n*45;
-      // Pin the word's box so swapping glyphs never reflows the page
-      el.style.width=el.getBoundingClientRect().width+'px';el.style.whiteSpace='nowrap';el.classList.add('dc');
-      var prev=0;
-      (function f(now){
-        var k=(now-t0)/dur;
-        if(k>=1){el.textContent=word;el.style.width=el.style.whiteSpace='';el.classList.remove('dc');return;}
-        if(now-prev>70){prev=now;var out='';
-          for(var i=0;i<n;i++){var c=word[i];out+=(k*n>i||!/\S/.test(c))?c.replace(/[&<>]/g,function(x){return '&#'+x.charCodeAt(0)+';'}):'<i class="cn">'+G[Math.random()*G.length|0]+'</i>';}
-          el.innerHTML=out;}
-        requestAnimationFrame(f);
-      })(performance.now());
-    });
-  }
   if(!('IntersectionObserver' in window)){heads.forEach(function(h){h.classList.add('in');});return;}
-  // Each heading decrypts once, the first time it shows up
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){decrypt(e.target);e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.2});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.2});
   heads.forEach(function(h){io.observe(h);});
 })();
 </script>
