@@ -12,7 +12,8 @@
       "serhii-portrait-back.png",
       "shot-*.jpg",
       "thumb-*.jpg",
-      "IMG_*"
+      "IMG_*",
+      "hero-photo-*"
     ],
     "cleanUrls": true,
     "headers": [

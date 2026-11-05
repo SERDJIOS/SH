@@ -15,3 +15,6 @@ thumb-speakquick.jpg
 .firebase/
 firebase-debug.log
 IMG_*
+
+# Unused colour-graded experiments of the hero photo
+hero-photo-*
